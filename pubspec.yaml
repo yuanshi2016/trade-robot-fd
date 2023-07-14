@@ -18,14 +18,14 @@ dependencies:
   date_format: ^1.0.5
   crypto: ^3.0.1
   gbk2utf8: ^0.0.1
-  cached_network_image: ^2.0.0-rc
+  cached_network_image: ^2.2.0
   flutter_spinkit: ^4.1.2
   loadmore: ^1.0.3
   flutter_swiper: ^1.1.6
   provider: ^4.0.5
   flustars: ^2.0.1
   oktoast: ^2.3.2
-  flutter_svg: ^0.20.0-nullsafety.3
+  flutter_svg: ^0.21.0
   flutter_easyrefresh: ^2.1.6
   webview_flutter: ^0.3.15+1
   expandable: ^4.1.3

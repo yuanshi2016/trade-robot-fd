@@ -1,28 +1,28 @@
 import 'dart:convert';
 
 import 'package:flustars/flustars.dart';
+import 'package:web_socket_channel/html.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/model/ticker.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
-
 /// todo 运行web的时候打开
-//import 'package:web_socket_channel/html.dart';
+import 'package:web_socket_channel/html.dart';
 
 /// todo 运行手机的时候打开
-import 'package:web_socket_channel/io.dart';
+// import 'package:web_socket_channel/io.dart';
 
 class WebSocketManager {
   static WebSocketChannel channel;
   // String url = "wss://www.ifortune.io/api/v1/quote/ticks/realtime";
-  static String url = 'wss://yun.mateforce.cn/test/quote/v1/ticks/realtime';
+  static String url = 'ws://yun.local100.com/test/quote/v1/ticks/realtime';
 
   static WebSocketChannel initializeWebSocketChannel(String url) {
     /// todo 运行手机的时候打开
-    return IOWebSocketChannel.connect(url);
+    // return IOWebSocketChannel.connect(url);
 
     /// todo 运行web的时候打开
-//     return HtmlWebSocketChannel.connect(url);
+    return HtmlWebSocketChannel.connect(url);
   }
 
   static void initChannel(String url) {

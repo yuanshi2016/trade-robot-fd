@@ -7,8 +7,8 @@ import 'package:wq_fotune/model/kline.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/page/kline/web_socket_utility.dart';
 bool inProduction = const bool.fromEnvironment("dart.vm.product");
-String purl = 'wss://yun.mateforce.cn/test/quote/v1/ws?uid=';
-String turl = 'ws://192.168.5.3:9530/quote/v1/ws?uid=';
+String purl = 'ws://yun.local100.com/test/quote/v1/ws?uid=';
+String turl = 'ws://yun.local100.com/quote/v1/ws?uid=';
 
 class WebSocketUtils {
   String url = "";

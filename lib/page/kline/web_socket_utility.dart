@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:web_socket_channel/io.dart';
+// import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
-
+import 'package:web_socket_channel/html.dart';
 /// WebSocket地址
 // const String _SOCKET_URL = 'ws://121.40.165.18:8800';
 
@@ -36,8 +36,10 @@ class WebSocketUtility {
     }
     return _socket;
   }
-
-  IOWebSocketChannel _webSocket; // WebSocket
+  /// todo 运行手机的时候打开
+  // IOWebSocketChannel _webSocket; // WebSocket
+  /// todo 运行web的时候打开
+  HtmlWebSocketChannel _webSocket; // WebSocket
   SocketStatus _socketStatus; // socket状态
   Timer _heartBeat; // 心跳定时器
   num _heartTimes = 3000; // 心跳间隔(毫秒)
@@ -67,7 +69,11 @@ class WebSocketUtility {
   /// 开启WebSocket连接
   void openSocket() {
     closeSocket();
-    _webSocket = IOWebSocketChannel.connect(_wsUrl);
+    /// todo 运行手机的时候打开
+    // _webSocket = IOWebSocketChannel.connect(_wsUrl);
+
+    /// todo 运行web的时候打开
+    _webSocket =HtmlWebSocketChannel.connect(_wsUrl);
     print('WebSocket连接成功: $_wsUrl');
     handleRefresh((){
       sendMessage(json.encode(subs));
