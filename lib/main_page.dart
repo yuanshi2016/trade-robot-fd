@@ -115,13 +115,13 @@ class MainPageState extends State<MainPageWidget> {
           bottomNavigationBar: new BottomNavigationBar(
             items: <BottomNavigationBarItem>[
               new BottomNavigationBarItem(
-                  icon: getTabIcon(0), label: getTabTitle(0).toString()),
+                  icon: getTabIcon(0), label: getTabTitle(0).data),
               new BottomNavigationBarItem(
-                  icon: getTabIcon(1), label: getTabTitle(1).toString()),
+                  icon: getTabIcon(1), label: getTabTitle(1).data),
               new BottomNavigationBarItem(
-                  icon: getTabIcon(2), label: getTabTitle(2).toString()),
+                  icon: getTabIcon(2), label: getTabTitle(2).data),
               new BottomNavigationBarItem(
-                  icon: getTabIcon(3), label: getTabTitle(3).toString()),
+                  icon: getTabIcon(3), label: getTabTitle(3).data),
             ],
             type: BottomNavigationBarType.fixed,
             //默认选中首页

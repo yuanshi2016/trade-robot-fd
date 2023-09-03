@@ -15,7 +15,7 @@ import 'package:web_socket_channel/html.dart';
 class WebSocketManager {
   static WebSocketChannel channel;
   // String url = "wss://www.ifortune.io/api/v1/quote/ticks/realtime";
-  static String url = 'ws://yun.local100.com/test/quote/v1/ticks/realtime';
+  static String url = 'wss://yun.local100.com/quote/v1/ticks/realtime';
 
   static WebSocketChannel initializeWebSocketChannel(String url) {
     /// todo 运行手机的时候打开
