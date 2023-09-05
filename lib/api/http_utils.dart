@@ -5,7 +5,7 @@ import 'package:wq_fotune/model/user_info.dart';
 const bool inProduction = const bool.fromEnvironment("dart.vm.product");
 const PROHOST = "https://www.ifortune.io";
 // const DEVHOST = "http://192.168.3.58:9530";
-const DEVHOST = "https://yun.local100.com";
+const DEVHOST = "https://yun.yuanshi01.com";
 String host = inProduction ? DEVHOST : DEVHOST;
 class Http {
   static Http instance;
