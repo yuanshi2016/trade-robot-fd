@@ -27,11 +27,11 @@ class WebSocketUtils {
       if (parseJson is int) {
         return;
       }
-      Kline kline = Kline.fromJson(parseJson);
-      if (!kline.symbol.contains("1m")) {
-        print("${kline.toJson()}");
-      }
-      Global.eventBus.emit("refresh_kline", kline);
+      // Kline kline = Kline.fromJson(parseJson);
+      // if (!kline.symbol.contains("1m")) {
+      //   print("${kline.toJson()}");
+      // }
+      // Global.eventBus.emit("refresh_kline", kline);
     }, onError: (e) {
       print(e);
     });

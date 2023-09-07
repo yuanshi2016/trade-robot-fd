@@ -34,20 +34,20 @@ class WebSocketManager {
     initChannel(url);
     channel.stream.listen((message) {
       if (message != null) {
-        Map resp = json.decode(message);
-        var data = resp["data"];
-        if (data == null) {
-          return;
-        }
-        var dataList = new List<Ticker>();
-        for (var item in data) {
-          var t = Ticker.fromJson(item);
-          SpUtil.putObject(t.symbol, t);
-          dataList.add(t);
-        }
-        handleRefresh(() {
-          Global.eventBus.emit("refreshMarket", dataList);
-        });
+        // Map resp = json.decode(message);
+        // var data = resp["data"];
+        // if (data == null) {
+        //   return;
+        // }
+        // var dataList = new List<Ticker>();
+        // for (var item in data) {
+        //   var t = Ticker.fromJson(item);
+        //   SpUtil.putObject(t.symbol, t);
+        //   dataList.add(t);
+        // }
+        // handleRefresh(() {
+        //   Global.eventBus.emit("refreshMarket", dataList);
+        // });
       }
     }, onError: (err) {
       print("链接失败， 重连, ${err.toString()}");

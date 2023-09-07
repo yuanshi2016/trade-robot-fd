@@ -63,7 +63,7 @@ class Http {
       if (CancelToken.isCancel(e)) {
         print('get请求取消! ' + e.message);
       } else {
-        print('get请求发生错误：$e');
+        print('get请求发生错误：$e'+url);
       }
     }
     if (response == null) {
