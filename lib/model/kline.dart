@@ -2,33 +2,39 @@
 /// symbol : "btcusdt"
 /// fin : 1
 /// data : {"open":"45710.43000000","high":"45717.62000000","low":"45651.19000000","close":"45661.11000000","vol":"9.46433000","amount":"432332.84393940","time":"1639792740000"}
+import 'dart:convert';
 
 class Kline {
   Kline({
     dynamic type,
-      dynamic symbol,
-      int fin, 
-      Data data,}){
+    dynamic symbol,
+    int fin,
+    Data data,
+  }) {
     _type = type;
     _symbol = symbol;
     _fin = fin;
     _data = data;
-}
-
-  Kline.fromJson(Map<String, dynamic> json) {
-    _type = json['type'];
-    _symbol = json['symbol'];
-    _fin = json['fin'] ?? 0;
-    _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
+
+  Kline.fromJson(Map<String, dynamic> jsons) {
+    _type = jsons['type'];
+    _symbol = jsons['symbol'];
+    _fin = jsons['fin'] ?? 0;
+    _data = jsons['data'] != null ? Data.fromJson(jsons['data']) : null;
+  }
+
   String _type;
   String _symbol;
   int _fin;
   Data _data;
 
   String get type => _type;
+
   String get symbol => _symbol;
+
   int get fin => _fin;
+
   Data get data => _data;
 
   Map<String, dynamic> toJson() {
@@ -41,7 +47,6 @@ class Kline {
     }
     return map;
   }
-
 }
 
 /// open : "45710.43000000"
@@ -54,13 +59,14 @@ class Kline {
 
 class Data {
   Data({
-      String open, 
-      String high, 
-      String low, 
-      String close, 
-      String vol, 
-      String amount, 
-      String time,}){
+    String open,
+    String high,
+    String low,
+    String close,
+    String vol,
+    String amount,
+    String time,
+  }) {
     _open = open;
     _high = high;
     _low = low;
@@ -68,17 +74,18 @@ class Data {
     _vol = vol;
     _amount = amount;
     _time = time;
-}
-
-  Data.fromJson(dynamic json) {
-    _open = json['open'];
-    _high = json['high'];
-    _low = json['low'];
-    _close = json['close'];
-    _vol = json['vol'];
-    _amount = json['amount'];
-    _time = json['time'];
   }
+
+  Data.fromJson(dynamic jsons) {
+    _open = jsons['open'];
+    _high = jsons['high'];
+    _low = jsons['low'];
+    _close = jsons['close'];
+    _vol = jsons['vol'];
+    _amount = jsons['amount'];
+    _time = jsons['time'];
+  }
+
   String _open;
   String _high;
   String _low;
@@ -88,11 +95,17 @@ class Data {
   String _time;
 
   String get open => _open;
+
   String get high => _high;
+
   String get low => _low;
+
   String get close => _close;
+
   String get vol => _vol;
+
   String get amount => _amount;
+
   String get time => _time;
 
   Map<String, dynamic> toJson() {
@@ -106,5 +119,4 @@ class Data {
     map['time'] = _time;
     return map;
   }
-
 }

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 import 'package:wq_fotune/common/EventBus.dart';
@@ -6,9 +5,10 @@ import 'package:wq_fotune/global.dart';
 import 'package:wq_fotune/model/kline.dart';
 import 'package:wq_fotune/page/common/CommonWidget.dart';
 import 'package:wq_fotune/page/kline/web_socket_utility.dart';
+
 bool inProduction = const bool.fromEnvironment("dart.vm.product");
 String purl = 'wss://yun.yuanshi01.com/quote/v1/ws?uid=';
-String turl = 'wss://yun.yuanshi01.com/quote/v1/ws?uid=';
+String turl = 'ws://10.10.1.22:9530/quote/v1/ws?uid=';
 
 class WebSocketUtils {
   String url = "";
@@ -16,7 +16,7 @@ class WebSocketUtils {
     DateTime now = DateTime.now();
     purl = purl + (userId ?? now.millisecond.toString());
     turl = turl + (userId ?? now.millisecond.toString());
-    url = inProduction ? purl : purl ;
+    url = inProduction ? purl : purl;
   }
 
   void initChannel() {
@@ -27,13 +27,13 @@ class WebSocketUtils {
       if (parseJson is int) {
         return;
       }
-      // Kline kline = Kline.fromJson(parseJson);
-      // if (!kline.symbol.contains("1m")) {
-      //   print("${kline.toJson()}");
-      // }
-      // Global.eventBus.emit("refresh_kline", kline);
+      Kline kline = Kline.fromJson(parseJson);
+      if (!kline.symbol.contains("1m")) {
+        // print("${kline.toJson()}");
+      }
+      Global.eventBus.emit("refresh_kline", kline);
     }, onError: (e) {
-      print(e);
+      print("错误" + e.toString());
     });
   }
 }

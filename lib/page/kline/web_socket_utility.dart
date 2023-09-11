@@ -23,8 +23,9 @@ class WebSocketUtility {
   static String _wsUrl;
   static Map<String, String> subs = {
     "sub": "1m",
+    "subType":"kline",
+    "exchange":"binance"
   };
-
   /// 内部构造方法，可避免外部暴露构造函数，进行实例化
   WebSocketUtility._();
 
@@ -57,11 +58,12 @@ class WebSocketUtility {
     this.onMessage = onMessage;
     this.onError = onError;
     Global.eventBus.on("selectInterval", (interval){
-      subs = {"sub": interval};
+      // subs = {"sub": interval};
+      subs["sub"] = interval;
       sendMessage(json.encode(subs));
     });
     Global.eventBus.on("cleanSelectInterval", (_) {
-      subs = {"sub": "1m"};
+      subs["sub"] = "1m";
       sendMessage(json.encode(subs));
     });
     openSocket();
@@ -123,7 +125,7 @@ class WebSocketUtility {
 
   /// 心跳
   void sentHeart() {
-    sendMessage('0');
+    sendMessage('{"subType":"pong"}');
   }
 
   /// 销毁心跳
